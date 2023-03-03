@@ -1,0 +1,56 @@
+#contraseña mal
+def contraseñamal():
+  messagebox.showerror("error","datos incorrectos verifique")
+
+
+def contraseñabien():
+  messagebox.showinfo("Ingreso","Accedio con el usuario " )
+
+  
+def comparar():
+    if usuario.get() != "T":
+        print(" usuario o contraseña mal ")
+
+
+ventana = Tk()
+ventana.title("BIENVENIDO")
+ventana.geometry("800x600")
+
+
+seccion1 = Frame(ventana,bg="purple")
+seccion1.pack(expand=True,fill='both')
+
+
+
+
+botoningresar= Button(seccion1,text="Ingresar",fg="black", command=comparar)
+botoningresar.place(x=300,y=350,width=80,height=30)
+botoncancelar= Button(seccion1,text="cancelar",fg="black")
+botoncancelar.place(x=400,y=350,width=80,height=30)
+
+
+contra = ttk.Entry(show="*",width="30")
+contra.place(x=300, y=250)
+
+usuario = ttk.Entry(show="*", width="30")
+usuario.place(x=300, y=300)
+
+
+
+
+
+usu = Label(seccion1,text="Usuario")
+usu.place(x=300, y=230)
+
+conta = Label(seccion1,text="Contraseña")
+conta.place(x=300, y=280)
+
+
+
+
+
+
+
+
+
+ventana.mainloop()
