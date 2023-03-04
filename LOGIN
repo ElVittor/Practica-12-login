@@ -1,43 +1,35 @@
-#contraseña mal
-def contraseñamal():
-  messagebox.showerror("error","datos incorrectos verifique")
-
-
-def contraseñabien():
-  messagebox.showinfo("Ingreso","Accedio con el usuario " )
-
-  
-def comparar():
-    if usuario.get() != "T":
-        print(" usuario o contraseña mal ")
-
-
+from tkinter import Tk, Button, Frame, ttk, Label
+from tkinter import*
+from Validador import*
+usuario = validar()
 ventana = Tk()
 ventana.title("BIENVENIDO")
-ventana.geometry("800x600")
+ventana.geometry("200x200")
 
 
-seccion1 = Frame(ventana,bg="purple")
+seccion1 = Frame(ventana,bg="pink")
 seccion1.pack(expand=True,fill='both')
 
+Contraseña = ttk.Entry(show="*",width="30")
+Contraseña.place(x=300, y=250)
 
+Usuario = ttk.Entry(show="*", width="30")
+Usuario.place(x=300, y=300)
 
 
 botoningresar= Button(seccion1,text="Ingresar",fg="black", command=comparar)
-botoningresar.place(x=300,y=350,width=80,height=30)
+botoningresar.place(x=100,y=100,width=80,height=30)
 botoncancelar= Button(seccion1,text="cancelar",fg="black")
-botoncancelar.place(x=400,y=350,width=80,height=30)
+botoncancelar.place(x=150,y=150,width=80,height=30)
 
-
-contra = ttk.Entry(show="*",width="30")
-contra.place(x=300, y=250)
-
-usuario = ttk.Entry(show="*", width="30")
-usuario.place(x=300, y=300)
-
-
-
-
+def comparar():
+    username = user.get()
+    contra = password.get()
+    if usuario.validar(username, contra):
+        messagebox.showinfo('Login', 'Usuario correcto')
+            
+    else:
+        messagebox.showinfo('Login', 'Usuario incorrecto')
 
 usu = Label(seccion1,text="Usuario")
 usu.place(x=300, y=230)
