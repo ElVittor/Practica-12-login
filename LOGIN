@@ -1,48 +1,38 @@
-from tkinter import Tk, Button, Frame, ttk, Label
+from tkinter import Tk, Button, Frame, ttk,messagebox, Label, Entry
 from tkinter import*
 from Validador import*
-usuario = validar()
+
+
 ventana = Tk()
-ventana.title("BIENVENIDO")
-ventana.geometry("200x200")
+usuario = validar()
+ventana.title("Login")
+ventana.geometry("800x600")
+ventana.configure(bg='grey')
 
+frame= Frame(bg="grey")
 
-seccion1 = Frame(ventana,bg="pink")
-seccion1.pack(expand=True,fill='both')
+label= Label(frame, text= "Ingresar",bg='White', fg="red", font="Arial, 30", pady="40")
+user_label = Label(frame, text='Usuario',bg='white',fg="red", font="Arial, 16")
+user= Entry(frame, font="Arial, 16")
+password= Entry(frame, font="Arial, 16")
+password_label= Label(frame, text='Password',bg='white',fg="black", font="Arial, 16")
 
-Contraseña = ttk.Entry(show="*",width="30")
-Contraseña.place(x=300, y=250)
+label.grid(row=0, column=0, columnspan=2, sticky="news")
+user_label.grid(row=1,column=0)
+user.grid(row=1,column=1, pady="20")
+password.grid(row=2, column=1, pady="20")
+password_label.grid(row=2,column=0)
 
-Usuario = ttk.Entry(show="*", width="30")
-Usuario.place(x=300, y=300)
+def login():
+        username = user.get()
+        contra = password.get()
+        if usuario.validar(username, contra):
+            messagebox.showinfo('Login', 'Usuario correcto')
+        else:
+            messagebox.showinfo('Login', 'Usuario incorrecto')
 
+botonLogin = Button(frame,text="Login", bg="White", fg="Black", command= login, font="Arial, 16")
+botonLogin.grid(row=3,column=0,columnspan=2,pady="30")
 
-botoningresar= Button(seccion1,text="Ingresar",fg="black", command=comparar)
-botoningresar.place(x=100,y=100,width=80,height=30)
-botoncancelar= Button(seccion1,text="cancelar",fg="black")
-botoncancelar.place(x=150,y=150,width=80,height=30)
-
-def comparar():
-    username = user.get()
-    contra = password.get()
-    if usuario.validar(username, contra):
-        messagebox.showinfo('Login', 'Usuario correcto')
-            
-    else:
-        messagebox.showinfo('Login', 'Usuario incorrecto')
-
-usu = Label(seccion1,text="Usuario")
-usu.place(x=300, y=230)
-
-conta = Label(seccion1,text="Contraseña")
-conta.place(x=300, y=280)
-
-
-
-
-
-
-
-
-
+frame.pack()
 ventana.mainloop()
